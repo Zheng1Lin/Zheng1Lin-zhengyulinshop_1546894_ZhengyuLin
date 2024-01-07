@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=YourChosenFont&display=swap">
+    <link rel="stylesheet" href="css/ZhengyuLin_styles.css">
+    <script src="js/ZhengyuLin_javascript"></script>
+    <link rel="icon" href="path/to/your/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'YourChosenFont', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        main {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .ad-section {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .advertisement {
+            max-width: 400px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .advertisement img,
+        .advertisement video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .advertisement:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+    </style>
+    <title>ZhengyuLin</title>
+</head>
+<body>
+
+    <!-- 头部 -->
+    <header>
+        <div class="logo">
+            <img src="assets/img/logo.jpg" alt="你的公司标志">
+            <h1>ZhengyuLin</h1>
+        </div>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main>
+        <section class="ad-section">
+            <div class="advertisement" id="imageAd">
+                <a href="https://world.taobao.com/" target="_blank">
+                    <img src="assets/img/advertisement1.jpg" alt="广告1">
+                </a>
+            </div>
+
+            <div class="advertisement" id="videoAd">
+                <video controls>
+                    <source src="assets/img/advertisement2.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <p><a href="https://world.taobao.com/" target="_blank">Visit Advertiser 2</a></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部 -->
+    <footer>
+        <p>Last Updated: 2023/12/25</p>
+        <p>Webmaster: Zhengyu Lin</p>
+        <p>Contact: S1546894@student.mp.edu.au</p>
+    </footer>
+
+    <!-- jQuery Script -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // jQuery动画效果
+            $("#imageAd").hide().slideDown(1000); // 示例动画，你可以根据需要修改
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="js/Register"></script>
+
+    <title>Register Page</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            background: #3498db;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        #error-message {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .login-container {
+                width: 90%;
+            }
+        }
+
+        .register-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ZhengyuLin Shop</h1>
+    </header>
+
+    <div class="login-container">
+        <form id="loginForm" action="login.php" method="post">
+        </form>
+        <p id="error-message"></p>
+    </div>
+
+    <div class="register-container">
+        <h2>Register</h2>
+        <form id="registerForm" action="register.php" method="post">
+            <label for="regUsername">Username:</label>
+            <input type="text" id="regUsername" name="username" required>
+            
+            <label for="regPassword">Password:</label>
+            <input type="password" id="regPassword" name="password" required>
+            
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="submit" onclick="validateRegisterForm()" value="register" name="register">Register</button>
+        </form>
+        <p id="reg-error-message"></p>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="Login.html">Login</a>
+        <a href="Register.html">Register</a>
+    </nav>
+
+    <script>
+        function validateRegisterForm() {
+            var regUsername = document.getElementById("regUsername").value;
+            var regPassword = document.getElementById("regPassword").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var regErrorMessage = document.getElementById("reg-error-message");
+
+            if (regUsername === "" || regPassword === "" || confirmPassword === "") {
+                regErrorMessage.textContent = "Please fill in all the fields.";
+            } else if (regPassword !== confirmPassword) {
+                regErrorMessage.textContent = "Passwords do not match.";
+            } else {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "register.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        if (xhr.responseText == "success") {
+                            window.location.href = "dashboard.html";
+                        } else {
+                            regErrorMessage.textContent = "Registration failed. Please try again.";
+                        }
+                    }
+                };
+                xhr.send("regUsername=" + regUsername + "&regPassword=" + regPassword);
+            }
+        }
+    </script>
+</body>
+</html>
